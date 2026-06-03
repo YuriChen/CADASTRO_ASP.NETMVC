@@ -1,0 +1,41 @@
+﻿@model WebAtividadeEntrevista.Models.ClienteModel
+@{
+    ViewBag.Title = "Alterar Cliente";
+}
+@section scripts{
+    <script>
+        var urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
+        var obj = @Html.Raw(Json.Encode(Model));
+        var urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
+
+        var urlBeneficiarioInclusao = '@Url.Action("Incluir", "Beneficiario", new { area = "" })';
+        var urlBeneficiarioAlteracao = '@Url.Action("Alterar", "Beneficiario", new { area = "" })';
+        var urlBeneficiarioExclusao = '@Url.Action("Excluir", "Beneficiario", new { area = "" })';
+        var urlBeneficiarioList = '@Url.Action("BeneficiarioList", "Beneficiario", new { area = "" })' + '?IdCliente=' + (obj ? obj.Id : 0);
+
+    </script>
+    @Scripts.Render("~/bundles/altClientes")
+    @Scripts.Render("~/bundles/beneficiarios")
+    @Scripts.Render("~/bundles/listBeneficiarios")
+    @Scripts.Render("~/bundles/jquerymask")
+    @Scripts.Render("~/bundles/validacaoCpf")
+}
+<h2>@Html.Raw(ViewBag.Title)</h2>
+@Html.Partial("Forms")
+
+<div class="modal fade" id="modalBeneficiario" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="modalContent">
+            <!-- Conteúdo carregado aqui -->
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        aplicarValidacaoCPF('#Cpf', {
+            botaoSalvar: $('#btnSalvarCliente'),
+            placeholder: '999.999.999-99'
+        });
+    });
+</script>

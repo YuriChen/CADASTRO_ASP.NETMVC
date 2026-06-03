@@ -1,0 +1,40 @@
+<form id="formCadastroBen" method="post">
+    <div class="modal-header">
+        <h5 class="modal-title">Cadastrar Beneficiário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -22px;">
+            <span>×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="CpfBen">CPF:</label>
+                    <input required="required" type="text" class="form-control" id="CpfBen" name="CpfBen" placeholder="999.999.999-99" maxlength="14">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="NomeBen">Nome:</label>
+                    <input required="required" type="text" class="form-control" id="NomeBen" name="NomeBen" placeholder="Ex.: João" maxlength="50">
+                </div>
+            </div>
+            <div class="col-md-2" style="height: 74px; display: flex; flex-direction: column;">
+                <div class="form-group" style="margin-top: auto; margin-bottom: 17px;">
+                    <button id="btnSalvarBen" type="button" class="btn btn-sm btn-success" onclick="salvarBeneficiario(event)">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row" style="margin-left:0 !important; margin-right: 0 !important;">
+    <table id="gridBeneficiarios" class="table"></table>
+</div>
+<script>
+    $(document).ready(function () {
+        aplicarValidacaoCPF('#CpfBen', {
+            botaoSalvar: $('#btnSalvarBen'),
+            placeholder: '999.999.999-99'
+        });
+    });
+</script>

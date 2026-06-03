@@ -1,0 +1,12 @@
+/* CSS para erro */
+.cpf-erro {
+    border-color: #dc3545 !important;
+    background-color: #fff8f8 !important;
+}
+
+.cpf-mensagem-erro {
+    color: #dc3545;
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+    display: block;
+}
